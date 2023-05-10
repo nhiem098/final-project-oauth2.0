@@ -30,9 +30,14 @@ class AuthServiceProvider extends ServiceProvider
 
         Passport::tokensCan([
             'view-posts' => 'View posts',
+            'create-posts' => 'Create new post',
+            'edit-posts' => 'Edit post',
+            'delete-posts' => 'Delete posts',
             'view-user' => 'View user',
         ]);
 
         // Passport::tokensExpireIn(now()->addSeconds(10));
+        // Passport::refreshTokensExpireIn(now()->addDays(30));
+        // Passport::personalAccessTokensExpireIn(now()->addMonths(6));
     }
 }

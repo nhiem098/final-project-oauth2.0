@@ -65,6 +65,10 @@
                                         @csrf
                                     </form>
                                 </div>
+                                
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link " href="{{ route('oauth2') }}">Oauth2</a>
                             </li>
                         @endguest
                     </ul>

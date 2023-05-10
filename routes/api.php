@@ -18,6 +18,11 @@ Route::middleware(['auth:api', 'scope:view-user'])->get('/user', function (Reque
     return $request->user();
 });
 
-
-Route::get('/posts', 'Api\PostsController@index')
-    ->middleware(['auth:api', 'scope:view-posts']);
+Route::middleware(['auth:api'])->group(function () {
+    Route::get('/posts', 'Api\PostsController@index')->middleware(['scope:view-posts']);
+    Route::get('/posts/create', 'Api\PostsController@create')->middleware(['scope:create-posts']);
+    Route::post('/posts', 'Api\PostsController@store')->middleware(['scope:create-posts']);
+    Route::get('/posts/{id}/edit', 'Api\PostsController@edit')->middleware(['scope:edit-posts']);
+    Route::put('/posts/{id}', 'Api\PostsController@update')->middleware(['scope:edit-posts']);
+    Route::delete('/posts/{id}', 'Api\PostsController@destroy')->middleware(['scope:delete-posts']);
+});
